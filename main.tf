@@ -8,8 +8,8 @@ module "vpc" {
   vpc_cidr        = "10.0.0.0/16"
 
   ### sinble_az = true or false
-  single_az       = true
+  single_az       = false
 
   ### Ignored if single_az is true
-  egress_multi_nat_gw = false  
+  egress_multi_nat_gw = true  
 }

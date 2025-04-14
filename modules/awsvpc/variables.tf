@@ -27,27 +27,3 @@ variable "egress_multi_nat_gw" {
   type        = bool
   default     = false
 }
-
-variable "instance_ami" {
-  description = "AMI ID for the EC2 instance"
-  type        = string
-  default     = "ami-0d52744d6551d851e"  # Amazon Linux 2 AMI in eu-central-1
-}
-
-variable "instance_type" {
-  description = "Instance type for the EC2 instance"
-  type        = string
-  default     = "t2.micro"
-}
-
-variable "instance_name" {
-  description = "Name tag for the EC2 instance"
-  type        = string
-  default     = "test-instance"
-}
-
-variable "instance_key_name" {
-  description = "Name of the SSH key pair to use for the instance"
-  type        = string
-  default     = ""
-}
