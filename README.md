@@ -1,6 +1,6 @@
 # AWS Infra Deployer
 
-### Infrastructure-as-Code (IaC) toolkit to deploy and manage AWS cloud environments using Terraform, with optional extensions in Python and Golang. Supports VPC, EC2, EKS, and other core AWS services.
+### Infrastructure-as-Code (IaC) toolkit to deploy and manage AWS cloud environments using Terraform.
 
 #### The awsvpc Terraform module creates and configures an AWS Virtual Private Cloud (VPC) with a flexible and customizable network architecture. It supports both single and multi Availability Zone (AZ) deployments, and offers options for managing egress traffic via NAT gateways.
 
