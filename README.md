@@ -2,7 +2,8 @@
 
 ### Infrastructure-as-Code (IaC) toolkit to deploy and manage AWS cloud environments using Terraform.
 
-#### The awsvpc Terraform module creates and configures an AWS Virtual Private Cloud (VPC) with a flexible and customizable network architecture. It supports both single and multi Availability Zone (AZ) deployments, and offers options for managing egress traffic via NAT gateways.
+## 📊 What It Does
+The awsvpc Terraform module creates and configures an AWS Virtual Private Cloud (VPC) with a flexible and customizable network architecture. It supports both single and multi Availability Zone (AZ) deployments, and offers options for managing egress traffic via NAT gateways.
 
 ### Key Features:
 ```
@@ -21,7 +22,7 @@
         b. One NAT gateway per AZ (high availability) in case of Multi AZ.
 ```
 
-### Example:
+## 🚀 Usage
 ```
 terraform providers
 Providers required by configuration:
