@@ -39,3 +39,12 @@ terraform plan
 ```
 terraform apply
 ```
+
+
+---
+
+## 📍 License
+
+Apache-2.0 License – feel free to use and adapt with attribution.
+
+---
