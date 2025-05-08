@@ -1,11 +1,19 @@
-# AWS Infra Deployer
+# Terraform AWS VPC Module – Customizable Single/Multi-AZ VPC with NAT Gateway Support
 
-### Infrastructure-as-Code (IaC) toolkit to deploy and manage AWS cloud environments using Terraform.
+A flexible and easy-to-use **Terraform module** to deploy a configurable **Amazon Web Services (AWS) VPC**, supporting both **single** and **multi-AZ** environments. The module provisions **public and private subnets**, **Internet Gateway**, and optionally multiple **NAT Gateways** for outbound traffic.
 
-## 📊 What It Does
-The awsvpc Terraform module creates and configures an AWS Virtual Private Cloud (VPC) with a flexible and customizable network architecture. It supports both single and multi Availability Zone (AZ) deployments, and offers options for managing egress traffic via NAT gateways.
+---
 
-### Key Features:
+## 🚀 Features
+
+- Provision an AWS VPC using Terraform
+- Support for single or multi Availability Zone (AZ) deployments
+- Automatically create public and private subnets
+- Internet Gateway and NAT Gateway integration
+- Support for multi-NAT Gateway strategy via variable toggle
+- Custom CIDR ranges and AZ selection
+- Modular and easy to integrate into existing infrastructures
+
 ```
 - VPC CIDR Block:
     1. Requires a base CIDR block of /16 to define the IP address space for the VPC.
@@ -21,6 +29,17 @@ The awsvpc Terraform module creates and configures an AWS Virtual Private Cloud 
         a. Single NAT gateway (cost-effective) in case of Multi AZ.
         b. One NAT gateway per AZ (high availability) in case of Multi AZ.
 ```
+
+---
+
+## 📦 Use Cases
+
+- Deploy AWS network infrastructure via Terraform
+- Separate public and private traffic via subnets
+- Enable internet access from private subnets using NAT
+- Start building a multi-AZ architecture foundation
+
+---
 
 ## 🚀 Usage
 ```
