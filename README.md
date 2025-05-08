@@ -59,7 +59,6 @@ terraform plan
 terraform apply
 ```
 
-
 ---
 
 ## 📍 License
