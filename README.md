@@ -19,15 +19,15 @@ A flexible and easy-to-use **Terraform module** to deploy a configurable **Amazo
     1. Requires a base CIDR block of /16 to define the IP address space for the VPC.
 - AZ Deployment Options:
     1. Single AZ:
-       Provisions one public subnet (/24) and one private subnet (/19) within a single Availability Zone.
+       Provisions one public subnet (/24) and one private subnet (/19) within the first Availability Zone in the list.
     2. Multi AZ:
-       Creates three public subnets (/24) and three private subnets (/19), distributed across three different Availability Zones.
+       Provisions one public subnet (/24) and one private subnet (/19) **per Availability Zone provided** (up to eight private subnets within the /16 CIDR), keeping the topology aligned with your region's actual AZ count.
 - Egress Configuration:
-    1. Supports configurable NAT gateway strategies based on if deploying Single AZ or Multi AZ:
-       Single NAT gateway (cost-effective) in case of Single AZ.
+    1. Supports configurable NAT gateway strategies based on the deployment mode:
+       Single NAT gateway (cost-effective) for Single AZ or Multi AZ.
        Optional:
-        a. Single NAT gateway (cost-effective) in case of Multi AZ.
-        b. One NAT gateway per AZ (high availability) in case of Multi AZ.
+        a. Single NAT gateway (cost-effective) shared across AZs.
+        b. One NAT gateway per AZ (high availability) following the number of subnets created.
 ```
 
 ---

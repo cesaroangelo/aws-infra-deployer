@@ -9,12 +9,18 @@ resource "aws_vpc" "main" {
   }
 }
 
+locals {
+  target_availability_zones = var.single_az ? [var.availability_zones[0]] : var.availability_zones
+  public_subnet_count       = length(local.target_availability_zones)
+  private_netnums           = var.single_az ? [3] : range(max(0, 8 - local.public_subnet_count), 8)
+}
+
 # Provides an VPC subnet resource (public).
 resource "aws_subnet" "public" {
-  count = var.single_az ? 1 : 3
+  count = local.public_subnet_count
   cidr_block = cidrsubnet(var.vpc_cidr, 8, count.index)
   vpc_id     = aws_vpc.main.id
-  availability_zone = var.single_az ? var.availability_zones[0] : element(var.availability_zones, count.index)
+  availability_zone       = local.target_availability_zones[count.index]
   map_public_ip_on_launch = true
   tags = {
     Name = "Public Subnet ${count.index}"
@@ -23,10 +29,10 @@ resource "aws_subnet" "public" {
 
 # Provides an VPC subnet resource (private).
 resource "aws_subnet" "private" {
-  count = var.single_az ? 1 : 3
-  cidr_block = cidrsubnet(var.vpc_cidr, 3, count.index + 3)
+  count = local.public_subnet_count
+  cidr_block = cidrsubnet(var.vpc_cidr, 3, local.private_netnums[count.index])
   vpc_id     = aws_vpc.main.id
-  availability_zone = var.single_az ? var.availability_zones[0] : element(var.availability_zones, count.index % length(var.availability_zones))
+  availability_zone = local.target_availability_zones[count.index]
   tags = {
     Name = "Private Subnet ${count.index}"
   }
@@ -79,6 +85,9 @@ resource "aws_route_table" "public" {
 resource "aws_route_table" "private" {
   count = length(aws_subnet.private)
   vpc_id = aws_vpc.main.id
+  tags = {
+    Name = "Private Route Table ${aws_subnet.private[count.index].availability_zone}"
+  }
 }
 
 # Provides a resource to create a routing table entry (a route) in a VPC routing table.
